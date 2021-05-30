@@ -1,0 +1,95 @@
+--lpm_mult DEDICATED_MULTIPLIER_CIRCUITRY="NO" DEVICE_FAMILY="Cyclone IV E" DSP_BLOCK_BALANCING="AUTO" LPM_PIPELINE=0 LPM_REPRESENTATION="SIGNED" LPM_WIDTHA=5 LPM_WIDTHB=8 LPM_WIDTHP=13 MAXIMIZE_SPEED=5 dataa datab result CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48
+--VERSION_BEGIN 18.0 cbx_cycloneii 2018:04:24:18:04:18:SJ cbx_lpm_add_sub 2018:04:24:18:04:18:SJ cbx_lpm_mult 2018:04:24:18:04:18:SJ cbx_mgl 2018:04:24:18:08:49:SJ cbx_nadder 2018:04:24:18:04:18:SJ cbx_padd 2018:04:24:18:04:18:SJ cbx_stratix 2018:04:24:18:04:18:SJ cbx_stratixii 2018:04:24:18:04:18:SJ cbx_util_mgl 2018:04:24:18:04:18:SJ  VERSION_END
+
+
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
+--  Your use of Intel Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Intel Program License 
+--  Subscription Agreement, the Intel Quartus Prime License Agreement,
+--  the Intel FPGA IP License Agreement, or other applicable license
+--  agreement, including, without limitation, that your use is for
+--  the sole purpose of programming logic devices manufactured by
+--  Intel and sold by Intel or its authorized distributors.  Please
+--  refer to the applicable agreement for further details.
+
+
+FUNCTION carry_sum (cin, sin)
+RETURNS ( cout, sout);
+FUNCTION lcell (in)
+RETURNS ( out);
+FUNCTION soft (in)
+RETURNS ( out);
+
+--synthesis_resources = lut 61 
+SUBDESIGN mult_edo
+( 
+	dataa[4..0]	:	input;
+	datab[7..0]	:	input;
+	result[12..0]	:	output;
+) 
+VARIABLE
+	add11_result[9..0]	:	WIRE;
+	add15_result[6..0]	:	WIRE;
+	add7_result[12..0]	:	WIRE;
+	cs2a[2..0] : carry_sum;
+	cs4a[1..0] : carry_sum;
+	le3a[7..0] : lcell;
+	le5a[8..0] : lcell;
+	le6a[8..0] : lcell;
+	sft10a[12..0] : soft;
+	sft12a[9..0] : soft;
+	sft13a[9..0] : soft;
+	sft14a[9..0] : soft;
+	sft16a[6..0] : soft;
+	sft17a[6..0] : soft;
+	sft18a[6..0] : soft;
+	sft8a[12..0] : soft;
+	sft9a[12..0] : soft;
+	dataa_node[7..0]	: WIRE;
+	datab_node[4..0]	: WIRE;
+	final_result_node[12..0]	: WIRE;
+	w124w[8..0]	: WIRE;
+	w12w[5..0]	: WIRE;
+	w169w	: WIRE;
+	w17w[7..0]	: WIRE;
+	w183w	: WIRE;
+	w269w[12..0]	: WIRE;
+	w79w[8..0]	: WIRE;
+
+BEGIN 
+	add11_result[] = sft12a[].out + sft13a[].out;
+	add15_result[] = sft16a[].out + sft17a[].out;
+	add7_result[] = sft8a[].out + sft9a[].out;
+	cs2a[].cin = ( B"0", ((w12w[2..2] & cs2a[0].cout) # w12w[3..3]), w12w[1..1]);
+	cs2a[].sin = ( cs2a[1].cout, ((((((! w12w[3..3]) & w12w[2..2]) & cs2a[0].cout) # ((w12w[3..3] & w12w[2..2]) & (! cs2a[0].cout))) # ((w12w[3..3] & (! w12w[2..2])) & cs2a[0].cout)) # ((w12w[3..3] & (! w12w[2..2])) & (! cs2a[0].cout))), w12w[1..1]);
+	cs4a[].cin = ( ((w12w[2..2] & cs4a[0].cout) # w12w[3..3]), w12w[1..1]);
+	cs4a[].sin = ( ((((((! w12w[3..3]) & (! w12w[2..2])) & cs4a[0].cout) # (((! w12w[3..3]) & w12w[2..2]) & (! cs4a[0].cout))) # ((w12w[3..3] & w12w[2..2]) & (! cs4a[0].cout))) # ((w12w[3..3] & (! w12w[2..2])) & cs4a[0].cout)), w12w[0..0]);
+	le3a[].in = (((w12w[4..4] & cs2a[2].sout) # ((w12w[4..4] & (! cs2a[2].sout)) & (! dataa_node[]))) # (((! w12w[4..4]) & cs2a[2].sout) & dataa_node[]));
+	le5a[].in = (! ((! (((! ( dataa_node[], B"0")) & cs2a[0].sout) & (! cs4a[0].sout))) & (! ((((! ( dataa_node[7..7], dataa_node[])) & cs2a[0].sout) & cs4a[0].sout) # ((( dataa_node[7..7], dataa_node[]) & (! cs2a[0].sout)) & cs4a[0].sout)))));
+	le6a[].in = (! ((! (((! ( dataa_node[], B"0")) & cs2a[1].sout) & (! cs4a[1].sout))) & (! ((((! ( dataa_node[7..7], dataa_node[])) & cs2a[1].sout) & cs4a[1].sout) # ((( dataa_node[7..7], dataa_node[]) & (! cs2a[1].sout)) & cs4a[1].sout)))));
+	sft10a[].in = add7_result[];
+	sft12a[].in = ( w183w, ( le3a[6..6].out, ( le3a[5..5].out, ( le3a[4..4].out, ( le3a[3..3].out, ( le3a[2..2].out, ( le3a[1..1].out, ( le3a[0..0].out, ( le5a[3..2].out)))))))));
+	sft13a[].in = ( w183w, ( (! w124w[8..8]), ( le6a[7..7].out, ( le6a[6..6].out, ( le6a[5..5].out, ( le6a[4..4].out, ( le6a[3..3].out, ( le6a[2..2].out, ( w183w, cs2a[1].sout)))))))));
+	sft14a[].in = add11_result[];
+	sft16a[].in = ( w183w, ( w169w, ( (! w79w[8..8]), ( le5a[7..7].out, ( le5a[6..6].out, ( le5a[5..4].out))))));
+	sft17a[].in = ( w183w, ( w183w, ( w169w, ( w183w, ( w183w, ( w183w, w12w[4..4]))))));
+	sft18a[].in = add15_result[];
+	sft8a[].in = ( w169w, ( (! w17w[7..7]), ( sft14a[8..8].out, ( sft14a[7..7].out, ( sft14a[6..6].out, ( sft14a[5..5].out, ( sft14a[4..4].out, ( sft14a[3..3].out, ( sft14a[2..2].out, ( le6a[1..1].out, ( le6a[0..0].out, ( le5a[1..0].out))))))))))));
+	sft9a[].in = ( w183w, ( sft14a[9..9].out, ( sft18a[6..6].out, ( sft18a[5..5].out, ( sft18a[4..4].out, ( sft18a[3..3].out, ( sft18a[2..2].out, ( sft18a[1..1].out, ( sft18a[0..0].out, ( sft14a[1..1].out, ( sft14a[0..0].out, ( w183w, cs2a[0].sout))))))))))));
+	dataa_node[] = ( datab[7..0]);
+	datab_node[] = ( dataa[4..0]);
+	final_result_node[] = ( w269w[12..0]);
+	result[] = ( final_result_node[12..0]);
+	w124w[] = le6a[].out;
+	w12w[] = ( datab_node[4..4], datab_node[]);
+	w169w = B"1";
+	w17w[] = le3a[].out;
+	w183w = B"0";
+	w269w[] = ( sft10a[12..11].out, sft10a[10..9].out, sft10a[8..7].out, sft10a[6..5].out, sft10a[4..3].out, sft10a[2..1].out, sft10a[0..0].out);
+	w79w[] = le5a[].out;
+END;
+--VALID FILE

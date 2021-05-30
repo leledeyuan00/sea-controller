@@ -1,0 +1,148 @@
+/* 
+ * --------------------
+ * Company					: CHANGCHUN YANCHUANG INTELLIGENT TECHNOLOGY CO.,LTD.
+ * --------------------
+ * Project Name			: motion controller
+ * Module Name				: IO
+ * Description				: The codes of "DA"
+ * --------------------
+ * Tool Versions			: Quartus II 13.1
+ * Target Device			: Cyclone IV E  EP4CE10F17C8
+ * --------------------
+ * Engineer					: jamut
+ * Revision					: V1.0
+ * Created Date			: 2018-01-05
+ * --------------------
+ * Engineer					:
+ * Revision					:
+ * Modified Date			:
+ * --------------------
+ * Additional Comments	: IO_16
+ * 
+ * --------------------
+ */
+ //-------------------------Timescale----------------------------//
+`timescale 1 ns / 1 ps
+//--------------------Module_AB_Servo---------------------//
+module AB_8(
+  	cs,
+	rd,
+	wr,
+	in0,
+	in1,
+	in2,
+	in3,
+	in4,
+	in5,
+	in6,
+	in7,
+	in8,
+	in9,
+	inA,
+	inB,
+	inC,
+	inD,
+	inE,
+	inF,
+	addr,
+	indb,
+	out0,
+	out1,
+	out2,
+	out3,
+	out4,
+	out5,
+	out6,
+	out7,
+	out8,
+	out9,
+	outA,
+	outB,
+	outC,
+	outD,
+	outE,
+	outF,
+	irq,
+	outdb
+	);
+
+	input cs,rd,wr;
+	input in0,in1,in2,in3,in4,in5,in6,in7,in8,in9,inA,inB,inC,inD,inE,inF;
+	input [5:0]addr;
+	input [15:0]indb;
+	output irq;
+	output out0,out1,out2,out3,out4,out5,out6,out7,out8,out9,outA,outB,outC,outD,outE,outF;
+	output [15:0]outdb;
+	
+	wire wrn,rdn;
+//-------------------------IO_16-------------------------------//
+ 
+	reg out0,out1,out2,out3,out4,out5,out6,out7,out8,out9,outA,outB,outC,outD,outE,outF;
+	reg [15:0]db_out;
+  
+	assign rdn = (cs | rd);
+	assign wrn = (cs | wr);
+ 
+   assign outdb = !rdn ? db_out : 16'hzzzz;
+	
+	always @(wrn or rdn)
+	begin
+	  if(!rdn)
+	  begin
+	     if(addr == 6'd32)
+		  begin
+		      db_out <= {inF,inE,inD,inC,inB,inA,in9,in8,in7,in6,in5,in4,in3,in2,in1,in0};
+		  end 
+	  end
+	  if(!wrn)
+	  begin
+       if(addr == 6'd33)
+		 begin
+		     case (indb)
+			  16'h0000: out0 <= 1'd1;
+		     16'h0001: out1 <= 1'd1;
+		     16'h0002: out2 <= 1'd1;
+		     16'h0003: out3 <= 1'd1;
+		     16'h0004: out4 <= 1'd1;
+		     16'h0005: out5 <= 1'd1;
+		     16'h0006: out6 <= 1'd1;
+		     16'h0007: out7 <= 1'd1;
+		     16'h0008: out8 <= 1'd1;
+			  16'h0009: out9 <= 1'd1;
+		     16'h000A: outA <= 1'd1;
+		     16'h000B: outB <= 1'd1;
+		     16'h000C: outC <= 1'd1;
+		     16'h000D: outD <= 1'd1;
+		     16'h000E: outE <= 1'd1;
+		     16'h000F: outF <= 1'd1;
+		     default:;
+		     endcase	  	
+		 end
+		 else if(addr == 6'd34)
+		 begin
+		     case (indb)
+			  16'h0000: out0 <= 1'd0;
+		     16'h0001: out1 <= 1'd0;
+		     16'h0002: out2 <= 1'd0;
+		     16'h0003: out3 <= 1'd0;
+		     16'h0004: out4 <= 1'd0;
+		     16'h0005: out5 <= 1'd0;
+		     16'h0006: out6 <= 1'd0;
+		     16'h0007: out7 <= 1'd0;
+		     16'h0008: out8 <= 1'd0;
+			  16'h0009: out9 <= 1'd0;
+		     16'h000A: outA <= 1'd0;
+		     16'h000B: outB <= 1'd0;
+		     16'h000C: outC <= 1'd0;
+		     16'h000D: outD <= 1'd0;
+		     16'h000E: outE <= 1'd0;
+		     16'h000F: outF <= 1'd0;
+		     default:;
+		     endcase	  	
+		 end	
+     end
+   end
+								
+//------------------------enmodule ---------------------------//
+
+endmodule

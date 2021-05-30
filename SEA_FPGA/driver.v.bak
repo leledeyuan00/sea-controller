@@ -1,0 +1,329 @@
+/* 
+ * --------------------
+ * Company					: Shenzhen MileBot Robotics Tech Co., Ltd.
+ * --------------------
+ * Project Name			: SEA
+ * Module Name				: IO
+ * Description				: 
+ * --------------------
+ * Tool Versions			: Quartus II 13.1
+ * Target Device			: Cyclone IV E  EP4CE15F
+ * --------------------
+ * Engineer					: Jamut_Wang
+ * Revision					: V1.0
+ * Created Date			: 2018-06-25
+ * --------------------
+ * Engineer					:
+ * Revision					:
+ * Modified Date			:
+ * --------------------
+ * Additional Comments	: rs485
+ * 
+ * --------------------
+ */
+//-------------------------Timescale----------------------------//
+`timescale 1 ns / 1 ps 
+//-----------------------Module rst_n---------------------------//
+module rs485(
+   input cs,
+	input rst_n,
+	input clk,
+	input rd,
+	input wr,
+	input rx,
+	
+	input [3:0]addr,
+	input[15:0]indata,
+	
+	output dir,
+	output tx,
+	output[15:0]db
+	
+	
+	
+);
+//---------------------------parameter--------------------------//
+
+
+//---------------------------------rx---------------------------//
+/* 鎺ユ敹妯″潡 */
+reg[3:0]j;
+reg[7:0]data_in;
+
+reg [7:0]receive_data;
+reg [7:0]receive_data1;
+reg [7:0]receive_data2;
+reg [7:0]receive_data3;
+reg [7:0]receive_data4;
+reg [7:0]receive_data5;
+reg [7:0]receive_data6;
+
+reg [7:0]data_out1;
+reg [7:0]data_out2;
+reg [7:0]data_out3;
+reg [7:0]data_out4;
+reg [7:0]data_out5;
+reg [7:0]data_out6;
+
+reg [15:0]db_out;
+reg dir_out;
+reg [7:0]cnt;
+reg rx_state;
+reg startrecode;
+reg [31:0]databuf;
+
+wire wrn = (cs | wr);
+wire rdn = (cs | rd);
+
+always @(negedge rdn)
+	  if(!rdn)
+		begin
+	
+		    case (addr)
+			 
+			   4'h0:   db_out <= {{15'd0},dir_out}; 
+			   4'h1:
+		           begin
+					   
+					     db_out <= {{data_out2},{data_out1}};
+						  databuf <= {{data_out6},{data_out5},{data_out4},{data_out3}};
+			
+					  end  
+				4'h2:   db_out <= {databuf[15:0]};
+				4'h3:  db_out <= {databuf[31:16]};
+				
+				
+			 default:  db_out <= 16'dzzzz;
+			 endcase
+		end
+		
+always@(posedge clk or negedge rst_n or negedge wrn)
+	if(!rst_n)
+		begin
+			j <= 4'd0;
+			data_in <= 8'd0;
+			data_out1 <= 8'd0;
+			data_out2 <= 8'd0;
+			data_out3 <= 8'd0;
+			data_out4 <= 8'd0;
+			data_out5 <= 8'd0;
+			data_out6 <= 8'd0;
+			cnt <= 8'd0;
+			receive_data <= 48'd0;
+			startrecode <= 1'd0;
+			rx_state <= 1'd0;
+		end
+	else 
+	begin
+	    if(!wrn)
+		 begin
+		   case (addr)
+			   
+
+			
+			   4'h1:  
+			       begin
+					    data_out1 <= indata[7:0];
+						 data_out2 <= indata[15:8];
+				    end 
+				4'h2:  
+			       begin
+					    data_out3 <= indata[7:0];
+						 data_out4 <= indata[15:8];
+				    end 
+				4'h3:  
+			       begin
+					    data_out5 <= indata[7:0];
+						 data_out6 <= indata[15:8];
+				    end 
+			 default:;  
+			 endcase
+		 end
+		 else
+		 begin
+		  if(!dir_out)
+		  begin
+	      case(j)
+			4'd0:                                    				//鍒ゆ柇璧峰鏍囧織
+				begin
+ 
+					if(!rx)           
+						begin
+							data_in <= 8'd0;
+							j <= j + 1'd1;
+							rx_state <= 1'd0;
+						end
+					else 
+					begin
+					   rx_state <= 1'd0;
+						j <= j;
+					end 
+					
+				end
+			4'd1,4'd2,4'd3,4'd4,4'd5,4'd6,4'd7,4'd8:				//鎺ユ敹鏁版嵁
+				begin
+					j <= j + 1'd1;
+					data_in <= {rx,data_in[7:1]};
+				end
+			4'd9:                                   				//鎺ユ敹鏍￠獙浣
+				begin
+				   j <= 1'd0;
+				   receive_data <= {data_in};
+				   if({data_in} == 8'h02 && startrecode == 1'd0)
+					begin
+					    startrecode <= 1'd1;
+						 cnt <= 1'd1;
+						 receive_data1 <= {data_in};				
+					end						
+					else if(startrecode)
+					begin
+					      if(cnt == 8'd1)
+							begin
+							   receive_data2 <= {data_in};
+								cnt <= cnt + 1'd1;
+							end
+							else if(cnt == 8'd2)
+							begin
+							   receive_data3 <= {data_in};
+								cnt <= cnt + 1'd1;
+							end
+							else if(cnt == 8'd3)
+							begin
+							   receive_data4 <= {data_in};
+								cnt <= cnt + 1'd1;
+							end
+							else if(cnt == 8'd4)
+							begin
+							   receive_data5 <= {data_in};
+								cnt <= cnt + 1'd1;
+							end
+							else if(cnt == 8'd5)
+							begin
+							   receive_data6 <= {data_in};
+							   startrecode <= 1'd0;
+							   data_out1 <= {receive_data1};
+					    	   data_out2 <= {receive_data2};
+						      data_out3 <= {receive_data3};
+						      data_out4 <= {receive_data4};
+						      data_out5 <= {receive_data5};
+						      data_out6 <= {receive_data6};
+							end
+					end	
+					
+					
+				end
+			4'd10: 															//鎺ユ敹鍋滄浣
+				begin
+				   if(cnt == 8'd6)
+					begin
+					   j <= 1'd0;
+					   cnt <= 8'd0;
+					//	receive_data <= {receive_data[39:0],data_in};
+						data_out1 <= {receive_data1};
+						data_out2 <= {receive_data2};
+						data_out3 <= {receive_data3};
+						data_out4 <= {receive_data4};
+						data_out5 <= {receive_data5};
+						data_out6 <= {receive_data6};
+					end
+					else
+					begin
+					   j <= 1'd0;
+						if(startrecode)
+						begin
+						   
+							if(cnt == 8'd0)
+							begin
+							   receive_data1 <= {receive_data};
+							end
+							else if(cnt == 8'd1)
+							begin
+							   receive_data2 <= {receive_data};
+							end
+							else if(cnt == 8'd2)
+							begin
+							   receive_data3 <= {receive_data};
+							end
+							else if(cnt == 8'd3)
+							begin
+							   receive_data4 <= {receive_data};
+							end
+							else if(cnt == 8'd4)
+							begin
+							   receive_data5 <= {receive_data};
+							end
+							else if(cnt == 8'd5)
+							begin
+							   receive_data6 <= {receive_data};
+							end
+							cnt <= cnt + 1'd1;
+							
+						 //  receive_data <= {receive_data[39:0],data_in};
+						   
+						end
+						
+				//	   data_out <= {{8'd0},receive_data};
+					   rx_state <= 1'd1;	
+					end
+				end
+			default: j <= 4'd0;
+	      endcase	
+		  end
+		 end
+   end
+
+//---------------------------------tx---------------------------//
+
+reg tx_r;
+reg [7:0]cmd;
+reg [21:0]i;     
+always @(posedge clk or negedge rst_n)
+	if (!rst_n)
+		begin
+			i <= 22'd0;
+			cmd <= 8'd2;	
+		end
+	else 
+																			 //寮€濮嬪彂閫丏ATA
+      if(clk)
+		begin
+		case(i)
+			22'd0: begin																 //鍏堝彂閫佽捣濮嬩綅0
+						i <= i + 1'd1;
+						
+					   cmd <= 8'd2;
+				  	   tx_r <= 1'd0;
+                  dir_out <= 1'd1;						
+					end
+			22'd1,14'd2,14'd3,14'd4,14'd5,14'd6,14'd7,14'd8:				 //tx_r
+					begin
+						i <= i + 1'd1;
+						{cmd[6:0],tx_r} <= cmd; 						 //涓插彛鍙戦€佹椂,浣庝綅鍦ㄥ厛
+					end								
+			22'd9: begin																 //1浣嶅鍋舵牎楠屼綅鍜浣嶅仠姝綅
+						i <= i + 1'd1;
+						tx_r <= 1'd1;  
+						
+					end
+			22'd10: begin																 //1浣嶅仠姝綅
+					  i <= i + 1'd1;
+					   dir_out <= 1'd0;		
+					  end
+			22'd500: begin															//瀹氭椂绾︿负1ms				
+							i <= 22'd0;
+					   end
+			default: i <= i + 1'd1;  												
+		endcase
+	//	tx_r = !tx_r;
+      end
+		
+	 
+      
+assign dir = dir_out;
+assign tx = tx_r;
+assign db = !rdn ? db_out : 16'hzzzz;
+
+endmodule
+			 
+				 
+				 

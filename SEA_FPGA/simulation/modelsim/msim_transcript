@@ -1,0 +1,155 @@
+# Reading E:/quartus/modelsim_ase/tcl/vsim/pref.tcl
+# do SEA_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying E:/quartus/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/controller {E:/FPGA/SEA/SEA_FPGA/controller/control_timer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:27 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA/controller" E:/FPGA/SEA/SEA_FPGA/controller/control_timer.v 
+# -- Compiling module control_timer
+# 
+# Top level modules:
+# 	control_timer
+# End time: 20:55:27 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/controller {E:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:27 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA/controller" E:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v 
+# -- Compiling module smc_controller
+# 
+# Top level modules:
+# 	smc_controller
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/controller {E:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA/controller" E:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v 
+# -- Compiling module nominal_model_controller
+# 
+# Top level modules:
+# 	nominal_model_controller
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/controller {E:/FPGA/SEA/SEA_FPGA/controller/controller_defines.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA/controller" E:/FPGA/SEA/SEA_FPGA/controller/controller_defines.v 
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/PLL_M.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/PLL_M.v 
+# -- Compiling module PLL_M
+# 
+# Top level modules:
+# 	PLL_M
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/DECODE.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/DECODE.v 
+# -- Compiling module DECODE
+# 
+# Top level modules:
+# 	DECODE
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/Rst_n.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/Rst_n.v 
+# -- Compiling module rst_n
+# 
+# Top level modules:
+# 	rst_n
+# End time: 20:55:28 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/fifo_data.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:28 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/fifo_data.v 
+# -- Compiling module fifo_data
+# 
+# Top level modules:
+# 	fifo_data
+# End time: 20:55:29 on Dec 11,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/rs485.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:29 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/rs485.v 
+# -- Compiling module rs485
+# 
+# Top level modules:
+# 	rs485
+# End time: 20:55:29 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/db {E:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:29 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA/db" E:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v 
+# -- Compiling module PLL_M_altpll
+# 
+# Top level modules:
+# 	PLL_M_altpll
+# End time: 20:55:29 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/fifo_control.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:29 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/fifo_control.v 
+# -- Compiling module FIFO_CONTROL
+# 
+# Top level modules:
+# 	FIFO_CONTROL
+# End time: 20:55:30 on Dec 11,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:30 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v 
+# -- Compiling module baudrate_ctrl
+# 
+# Top level modules:
+# 	baudrate_ctrl
+# End time: 20:55:30 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/spi_ctrl.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:30 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/spi_ctrl.v 
+# -- Compiling module spi_ctrl
+# 
+# Top level modules:
+# 	spi_ctrl
+# End time: 20:55:30 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/ab_8.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:55:30 on Dec 11,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/FPGA/SEA/SEA_FPGA" E:/FPGA/SEA/SEA_FPGA/ab_8.v 
+# -- Compiling module AB_8
+# ** Error: (vlog-13064) E:/FPGA/SEA/SEA_FPGA/ab_8.v(69): near "z": X and Z values not allowed in decimal constants.
+# End time: 20:55:30 on Dec 11,2018, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: E:/quartus/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./SEA_run_msim_rtl_verilog.do line 21
+# E:/quartus/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA {E:/FPGA/SEA/SEA_FPGA/ab_8.v}"
+dataset reload -f
+# Dataset not found: 
+project open E:/FPGA/SEA/SEA_FPGA/simulation/modelsim/nominal_tb
+# Loading project nominal_tb

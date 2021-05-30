@@ -1,0 +1,157 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "M_EN1",
+					"strict" : false
+				},
+				{
+					"name" : "M_PUL1",
+					"strict" : false
+				},
+				{
+					"name" : "M_DIR1",
+					"strict" : false
+				},
+				{
+					"name" : "C_DIR1",
+					"strict" : false
+				},
+				{
+					"name" : "C_TX1",
+					"strict" : false
+				},
+				{
+					"name" : "SPI_CS",
+					"strict" : false
+				},
+				{
+					"name" : "SPI_CLK",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[15]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[14]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[13]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[12]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[11]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[10]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[9]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[8]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[7]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[6]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[5]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[4]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[3]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_DATA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "WR",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "CS",
+					"strict" : false
+				},
+				{
+					"name" : "FSMC_ADDR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "RD",
+					"strict" : false
+				},
+				{
+					"name" : "C_RX",
+					"strict" : false
+				},
+				{
+					"name" : "SPI_IN",
+					"strict" : false
+				},
+				{
+					"name" : "SIG1_B",
+					"strict" : false
+				},
+				{
+					"name" : "SIG1_A",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

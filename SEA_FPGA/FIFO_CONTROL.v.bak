@@ -1,0 +1,126 @@
+/* 
+ * --------------------
+ * Company					: LUOYANG GINGKO TECHNOLOGY CO.,LTD.
+ * BBS						: http://www.eeschool.org
+ * --------------------
+ * Project Name			: fifo
+ * Module Name				: fifo
+ * Description				: ---
+ * --------------------
+ * Tool Versions			: Quartus II 13.1
+ * Target Device			: Cyclone IV E  EP4CE15F23C8
+ * --------------------
+ * Engineer					: xiaorenwu
+ * Revision					: V0.0
+ * Created Date			: 2017-08-22
+ * --------------------
+ * Engineer					:
+ * Revision					:
+ * Modified Date			:
+ * --------------------
+ * Additional Comments	: ---
+ * 
+ * --------------------
+ */
+//-------------------------Timescale----------------------------//
+`timescale 1 ns / 1 ps 
+//-----------------------Module fifo_wr_rd----------------------//
+module FIFO_CONTROL(
+	input clk_25m,
+	input rst_n,
+	input wrn,
+	input rdn,
+	input cs0,
+   
+	input [3:0]addr,
+	inout [15:0]db,
+	output fifo_full_flag
+	
+);
+
+reg clr_fifo;
+
+pll u1(
+	.inclk0(clk_25m),
+	.c0(clk_150m)
+);
+
+wire [15:0]data_out;
+my_fifo u2(
+	.data(data_in),
+	.wrreq(1'd1),
+	.wrclk(writefifo),
+	.rdreq(1'd1),
+	.rdclk(!rd),
+	.clrq(clr_fifo),
+	.wrfull(fifo_full_flag),
+	.q(data_out)
+);
+
+reg writefifo;
+reg [15:0]data_in;
+
+always@(posedge clk_150m or negedge wr2 or negedge rst_n)
+	if(!rst_n)
+	begin
+		data_in <= 16'd0;
+		writefifo <= 1'd0;
+	end
+	else
+	 begin
+	    if(!wr2)
+		  begin
+		     case (addr)
+			  4'd1: 
+			     begin
+				    data_in <= db;
+					 writefifo <= 1'd0;
+				  end
+			   4'd2:
+				begin
+				   clr_fifo <= 1'd1;
+					writefifo <= 1'd0;
+				end
+			   4'd3:
+				begin
+				   clr_fifo <= 1'd0;
+					writefifo <= 1'd0;
+				end	
+				
+			  default:writefifo <= 1'd0;
+			  endcase
+		    
+		  end
+		  else
+		  begin
+		     if(clk_150m)
+			  begin
+			     writefifo <= 1'd1;
+			  end
+		  end
+	 end
+
+		
+reg wr1,wr2;
+always@(posedge clk_150m or negedge rst_n)
+	if(!rst_n)
+		begin
+			wr1 <= 1'd0;
+			wr2 <= 1'd0;
+		end
+	else 
+		{wr2,wr1} <= {wr1,wr};
+
+assign writefifoOK =  writefifo;
+		
+wire wr3 = wr2 | !writefifoOK; 		
+
+wire rd = rdn | cs0;			
+wire wr = wrn | cs0;
+
+  
+assign db = rd ? 16'hzzzz : data_out;
+
+endmodule
+
+

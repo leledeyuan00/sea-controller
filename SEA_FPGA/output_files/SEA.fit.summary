@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Mar 06 18:01:15 2019
+Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+Revision Name : SEA
+Top-level Entity Name : SEA
+Family : Cyclone IV E
+Device : EP4CE6F17C8
+Timing Models : Final
+Total logic elements : 2,753 / 6,272 ( 44 % )
+    Total combinational functions : 2,555 / 6,272 ( 41 % )
+    Dedicated logic registers : 864 / 6,272 ( 14 % )
+Total registers : 864
+Total pins : 40 / 180 ( 22 % )
+Total virtual pins : 0
+Total memory bits : 1,568 / 276,480 ( < 1 % )
+Embedded Multiplier 9-bit elements : 28 / 30 ( 93 % )
+Total PLLs : 1 / 2 ( 50 % )

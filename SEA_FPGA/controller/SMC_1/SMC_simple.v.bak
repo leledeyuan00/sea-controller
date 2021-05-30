@@ -1,0 +1,35 @@
+`include "../arithmatic/arithmatic.v"
+
+module smc_simple(
+	input signed[31:0] theta_e,
+	input signed[31:0] dtheta_e,
+	input signed[31:0] ddtheta,
+	
+	output signed[31:0] u
+);
+	
+	localparam J = 2'b1;
+	localparam c = 2'b1; //fix2_en1
+	localparam xite = 2'b1; //fix2_en1
+	localparam xite_32 = {{30{xite[2]}},xite};
+	
+	wire signed[31:0] ce;
+	wire signed[31:0] s;	
+	wire signed[31:0] cde;	
+	wire signed[31:0] chater;	
+	wire signed[31:0] u_1;	
+	wire signed[31:0] u_2;
+	wire signed[31:0] u_3;
+	
+	
+fixed_multiplier #(32,2,32)	inst1(theta_e,c,ce,); //ce = c * theta_e    --- sfixed32_En1
+fixed_adder #(32,32,32) inst2(ce,(dtheta_e<<<1),s,`ADD,); //s = c * theta_e + dtheta_e    --- sfixed32_En1
+fixed_multiplier #(32,2,32) inst3(dtheta_e,c,cde,);//cde = c * dtheta_e  --- sfixed32_En1
+
+assign chater = (s[32] == 1'b0)?xite_32:(-xite_32); // sfixed32_En0
+
+fixed_adder #(32,32,32) inst4((ddtheta<<<1),cde,u_1,`SUB,);// sfixed32_En1
+fixed_adder #(32,32,32) inst5(u_1,(chater<<<1),u_2,`SUB,); // sfixed32_En1
+fixed_multiplier #(32,2,32) inst6(u_2,J,u_3,);//sfixed_En1
+assign u = u_3 <<<7;
+endmodule

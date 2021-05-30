@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at ab_8.v(115): always construct contains both blocking and non-blocking assignments File: E:/FPGA/SEA/SEA_FPGA/ab_8.v Line: 115

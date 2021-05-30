@@ -1,0 +1,7 @@
+vsim work.nominal_model_controller
+# vsim work.nominal_model_controller 
+# Start time: 20:56:58 on Dec 11,2018
+# ** Error: (vsim-3170) Could not find 'nominal_model_controller'.
+#         Searched libraries:
+#             E:/FPGA/SEA/SEA_FPGA/simulation/modelsim/work
+# Error loading design

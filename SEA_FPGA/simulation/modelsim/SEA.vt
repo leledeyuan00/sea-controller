@@ -1,0 +1,96 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "12/11/2018 14:35:46"
+                                                                                
+// Verilog Test Bench template for design : SEA
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ps/ 1 ps
+module SEA_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg C_RX;
+reg CLK_IN;
+reg CS;
+reg [7:0] FSMC_ADDR;
+reg [15:0] treg_FSMC_DATA;
+reg RD;
+reg SIG1_A;
+reg SIG1_B;
+reg SIG1_Z;
+reg SPI_IN;
+reg WR;
+// wires                                               
+wire C_DIR1;
+wire C_TX1;
+wire [15:0]  FSMC_DATA;
+wire M_DIR1;
+wire M_EN1;
+wire M_PUL1;
+wire SPI_CLK;
+wire SPI_CS;
+
+// assign statements (if any)                          
+assign FSMC_DATA = treg_FSMC_DATA;
+SEA i1 (
+// port map - connection between master ports and signals/registers   
+	.C_DIR1(C_DIR1),
+	.C_RX(C_RX),
+	.C_TX1(C_TX1),
+	.CLK_IN(CLK_IN),
+	.CS(CS),
+	.FSMC_ADDR(FSMC_ADDR),
+	.FSMC_DATA(FSMC_DATA),
+	.M_DIR1(M_DIR1),
+	.M_EN1(M_EN1),
+	.M_PUL1(M_PUL1),
+	.RD(RD),
+	.SIG1_A(SIG1_A),
+	.SIG1_B(SIG1_B),
+	.SIG1_Z(SIG1_Z),
+	.SPI_CLK(SPI_CLK),
+	.SPI_CS(SPI_CS),
+	.SPI_IN(SPI_IN),
+	.WR(WR)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+

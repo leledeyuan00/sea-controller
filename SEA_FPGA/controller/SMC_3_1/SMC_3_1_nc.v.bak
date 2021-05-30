@@ -1,0 +1,36 @@
+`include "../arithmatic/arithmatic.v"
+//fixed_adder #(.p(),.q(),.n()) pipe (.x(),.y(),.z(),.op(),.ov());
+//fixed_multiplier #(.p(),.q(),.n()) pipe (.x(),.y(),.z(),.ov());
+module smc_3_1_nc(
+	input signed[31:0] thetad, //sifx32
+	input signed[31:0] dthetad,
+	input signed[31:0] ddthetad,
+	
+	input signed[31:0] thetan, //sfix32_En14
+	input signed[31:0] dthetan,//sfix32_En14
+	
+	output signed[31:0] u //sfix32
+);
+	localparam k  = 8'd3;
+	localparam Bn = 8'd10;
+	localparam Jn = 8'd3;
+	localparam h1 = 8'd9; //k^2
+	localparam h2 = 8'd3; //2*k - Bn/Jn
+	localparam h3 = 8'd3; //Bn/Jn
+	
+	wire signed[31:0] e,de,eh,deh,dthdh,esum,esum1,esum2;
+	
+	fixed_adder #(.p(32),.q(32),.n(32)) pipe1_1 (.x($signed(thetan>>>14)),.y(thetad),.z(e),.op(`SUB),.ov());
+	fixed_adder #(.p(32),.q(32),.n(32)) pipe1_2 (.x($signed(dthetan>>>14)),.y(dthetad),.z(de),.op(`SUB),.ov());
+
+	fixed_multiplier #(.p(32),.q(8),.n(32)) pipe2_1 (.x(h1),.y(e),.z(eh),.ov());
+	fixed_multiplier #(.p(32),.q(8),.n(32)) pipe2_2 (.x(h2),.y(de),.z(deh),.ov());
+	fixed_multiplier #(.p(32),.q(8),.n(32)) pipe2_3 (.x(h3),.y(dthetad),.z(dthdh),.ov());
+	
+	fixed_adder #(.p(32),.q(32),.n(32)) pipe3_2 (.x(eh),.y(deh),.z(esum1),.op(`ADD),.ov());
+	fixed_adder #(.p(32),.q(32),.n(32)) pipe3_2 (.x(ddthetad),.y(dthdh),.z(esum2),.op(`ADD),.ov());
+	
+	fixed_adder #(.p(32),.q(32),.n(32)) pipe4_1 (.x(esum2),.y(esum1),.z(esum),.op(`SUB),.ov());
+	
+	fixed_multiplier #(.p(32),.q(8),.n(32)) pipe5_1 (.x(esum),.y(Jn),.z(u),.ov());
+endmodule

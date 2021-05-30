@@ -1,0 +1,278 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/FPGA/SEA/SEA_FPGA/simulation/modelsim
+vbaudrate_ctrl
+Z1 !s110 1544532930
+!i10b 1
+!s100 cI99jl_U7^8f?H:j9c[>?2
+Icde;W9TChUUOQ`V:oLa8P3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1544274308
+8E:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v
+FE:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v
+Z3 L0 28
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1544532930.000000
+!s107 E:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/baudrate_ctrl.v|
+!i113 1
+Z6 o-vlog01compat -work work
+Z7 !s92 -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA
+Z8 tCvgOpt 0
+vcontrol_timer
+Z9 !s110 1544532927
+!i10b 1
+!s100 DFIPCk<eDDXT]Wi4o:C?l2
+IZSCIo53Sf3dC?UUYPhPf;0
+R2
+R0
+w1543675307
+8E:/FPGA/SEA/SEA_FPGA/controller/control_timer.v
+FE:/FPGA/SEA/SEA_FPGA/controller/control_timer.v
+L0 2
+R4
+r1
+!s85 0
+31
+Z10 !s108 1544532927.000000
+!s107 E:/FPGA/SEA/SEA_FPGA/controller/control_timer.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA/controller|E:/FPGA/SEA/SEA_FPGA/controller/control_timer.v|
+!i113 1
+R6
+Z11 !s92 -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/controller
+R8
+vDECODE
+Z12 !s110 1544532928
+!i10b 1
+!s100 fLR>9iG;UzeFk5WLXQLIg3
+I9Y3izF35nfH6_l=;RGZB13
+R2
+R0
+w1537241082
+8E:/FPGA/SEA/SEA_FPGA/DECODE.v
+FE:/FPGA/SEA/SEA_FPGA/DECODE.v
+Z13 L0 39
+R4
+r1
+!s85 0
+31
+Z14 !s108 1544532928.000000
+!s107 E:/FPGA/SEA/SEA_FPGA/DECODE.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/DECODE.v|
+!i113 1
+R6
+R7
+R8
+n@d@e@c@o@d@e
+vFIFO_CONTROL
+R1
+!i10b 1
+!s100 5ATcTQ^A36[9]XiXSEF5h0
+IFK`n2__FnX]d>5GXVz7163
+R2
+R0
+w1539744530
+8E:/FPGA/SEA/SEA_FPGA/fifo_control.v
+FE:/FPGA/SEA/SEA_FPGA/fifo_control.v
+R3
+R4
+r1
+!s85 0
+31
+Z15 !s108 1544532929.000000
+!s107 E:/FPGA/SEA/SEA_FPGA/fifo_control.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/fifo_control.v|
+!i113 1
+R6
+R7
+R8
+n@f@i@f@o_@c@o@n@t@r@o@l
+vfifo_data
+Z16 !s110 1544532929
+!i10b 1
+!s100 HJ2_lC?8acbokC2_0ZQLa2
+I?DSeT5UjTC2j`7?k1>QHP3
+R2
+R0
+w1542976381
+8E:/FPGA/SEA/SEA_FPGA/fifo_data.v
+FE:/FPGA/SEA/SEA_FPGA/fifo_data.v
+R13
+R4
+r1
+!s85 0
+31
+R14
+!s107 E:/FPGA/SEA/SEA_FPGA/fifo_data.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/fifo_data.v|
+!i113 1
+R6
+R7
+R8
+vnominal_model_controller
+R12
+!i10b 1
+!s100 mCjk1ej>NJkZJKTz@9Q4Q1
+IEIHD5>Fhg0JPI79Woj;ao1
+R2
+R0
+w1544412866
+8E:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v
+FE:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v
+L0 3
+R4
+r1
+!s85 0
+31
+R14
+!s107 E:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA/controller|E:/FPGA/SEA/SEA_FPGA/controller/nominal_model_controller.v|
+!i113 1
+R6
+R11
+R8
+vPLL_M
+R12
+!i10b 1
+!s100 cZLX^c7Vlm8Df>Hb=>]aE0
+I=TT7mdNEGMYzB^ocLPJ_e0
+R2
+R0
+w1544274794
+8E:/FPGA/SEA/SEA_FPGA/PLL_M.v
+FE:/FPGA/SEA/SEA_FPGA/PLL_M.v
+R13
+R4
+r1
+!s85 0
+31
+R14
+!s107 E:/FPGA/SEA/SEA_FPGA/PLL_M.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/PLL_M.v|
+!i113 1
+R6
+R7
+R8
+n@p@l@l_@m
+vPLL_M_altpll
+R16
+!i10b 1
+!s100 FSMbj;b4z93Z3T;@2LT]>3
+IACQe2JRjZ<GAAVVbl?>B83
+R2
+R0
+w1544275302
+8E:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v
+FE:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v
+L0 29
+R4
+r1
+!s85 0
+31
+R15
+!s107 E:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA/db|E:/FPGA/SEA/SEA_FPGA/db/pll_m_altpll.v|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+E:/FPGA/SEA/SEA_FPGA/db
+R8
+n@p@l@l_@m_altpll
+vrs485
+R16
+!i10b 1
+!s100 jH<Q<oLlW>S>T3jPZcF]G0
+IWMlJV2283b:_LWT2Vf:Pa3
+R2
+R0
+w1544510420
+8E:/FPGA/SEA/SEA_FPGA/rs485.v
+FE:/FPGA/SEA/SEA_FPGA/rs485.v
+L0 27
+R4
+r1
+!s85 0
+31
+R15
+!s107 E:/FPGA/SEA/SEA_FPGA/rs485.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/rs485.v|
+!i113 1
+R6
+R7
+R8
+vrst_n
+R12
+!i10b 1
+!s100 Oho>P]HK=1SBjU^K^:9nL2
+INhKQgTfkn]Em4jPn6gJSM2
+R2
+R0
+w1537249180
+8E:/FPGA/SEA/SEA_FPGA/Rst_n.v
+FE:/FPGA/SEA/SEA_FPGA/Rst_n.v
+L0 26
+R4
+r1
+!s85 0
+31
+R14
+!s107 E:/FPGA/SEA/SEA_FPGA/Rst_n.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/Rst_n.v|
+!i113 1
+R6
+R7
+R8
+vsmc_controller
+R9
+!i10b 1
+!s100 2Y<Y97TC3?C]52XHo`>:H2
+I0fkf>15jfb>m8`nlN<Pg_0
+R2
+R0
+w1544428479
+8E:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v
+FE:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v
+L0 1
+R4
+r1
+!s85 0
+31
+R10
+!s107 E:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA/controller|E:/FPGA/SEA/SEA_FPGA/controller/smc_controller.v|
+!i113 1
+R6
+R11
+R8
+vspi_ctrl
+R1
+!i10b 1
+!s100 ^o1f1jRR2Q^><2b4Zg6MC3
+IX8mXcI=`jej`@OjDQG`G<3
+R2
+R0
+w1537957442
+8E:/FPGA/SEA/SEA_FPGA/spi_ctrl.v
+FE:/FPGA/SEA/SEA_FPGA/spi_ctrl.v
+L0 25
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/FPGA/SEA/SEA_FPGA/spi_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/FPGA/SEA/SEA_FPGA|E:/FPGA/SEA/SEA_FPGA/spi_ctrl.v|
+!i113 1
+R6
+R7
+R8

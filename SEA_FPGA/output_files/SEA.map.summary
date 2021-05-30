@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Mar 06 17:59:23 2019
+Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+Revision Name : SEA
+Top-level Entity Name : SEA
+Family : Cyclone IV E
+Total logic elements : 2,893
+    Total combinational functions : 2,539
+    Dedicated logic registers : 864
+Total registers : 864
+Total pins : 40
+Total virtual pins : 0
+Total memory bits : 1,568
+Embedded Multiplier 9-bit elements : 28
+Total PLLs : 1
