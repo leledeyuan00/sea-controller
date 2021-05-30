@@ -1,6 +1,6 @@
 # SEA Controller
 
-This is the project for a controller architechture consisted of FPGA and STM32.
+This is the project for a controller architecture consisted of FPGA and STM32.
 
 `FreeRTOS` is the project for STM32. There is a 1kHz control frequency on it.
 
